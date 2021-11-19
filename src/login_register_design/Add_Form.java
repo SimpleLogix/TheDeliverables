@@ -6,30 +6,27 @@
 package login_register_design;
 
 import java.awt.Color;
-import java.io.FileNotFoundException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import net.proteanit.sql.DbUtils;
 
 /**
  *
  * @author gilmorer2
  */
-public class Admin_Form extends javax.swing.JFrame {
+public class Add_Form extends javax.swing.JFrame {
 
     /**
      * Creates new form Checking_Form
      */
-    public Admin_Form() {
+    public Add_Form() {
         initComponents();
        // DisplayTable();
         setLocationRelativeTo(null);
@@ -90,13 +87,22 @@ public class Admin_Form extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField_Username = new javax.swing.JTextField();
         jButton_username = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jLabel_Add = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField_Username = new javax.swing.JTextField();
+        jTextField_Sender = new javax.swing.JTextField();
+        jTextField_Reciever = new javax.swing.JTextField();
+        jTextField_Type = new javax.swing.JTextField();
+        jTextField_Weight = new javax.swing.JTextField();
+        jTextField_Status = new javax.swing.JTextField();
+        jLabel_AdminPage = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,7 +158,7 @@ public class Admin_Form extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("  Admin");
+        jLabel1.setText("Add");
 
         javax.swing.GroupLayout jPanel_title_checkingsLayout = new javax.swing.GroupLayout(jPanel_title_checkings);
         jPanel_title_checkings.setLayout(jPanel_title_checkingsLayout);
@@ -175,10 +181,10 @@ public class Admin_Form extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(188, 188, 188)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel_title_checkings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(202, 202, 202))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,11 +196,8 @@ public class Admin_Form extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel2.setText("Enter username:");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 255));
         jLabel3.setText(" Home");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -209,7 +212,7 @@ public class Admin_Form extends javax.swing.JFrame {
             }
         });
 
-        jButton_username.setText("jButton1");
+        jButton_username.setText("Upload");
         jButton_username.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton_usernameMouseEntered(evt);
@@ -224,31 +227,35 @@ public class Admin_Form extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        jLabel4.setText("Username:");
 
-        jLabel_Add.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel_Add.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel_Add.setText("Add");
-        jLabel_Add.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel6.setText("Sender Address:");
+
+        jLabel7.setText("Reciever Address:");
+
+        jLabel8.setText("Package Type:");
+
+        jLabel9.setText("Weight:");
+
+        jLabel10.setText("Status:");
+
+        jTextField_Username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_UsernameActionPerformed(evt);
+            }
+        });
+
+        jLabel_AdminPage.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel_AdminPage.setText("Admin Page");
+        jLabel_AdminPage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel_AddMouseClicked(evt);
+                jLabel_AdminPageMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel_AddMouseEntered(evt);
+                jLabel_AdminPageMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel_AddMouseExited(evt);
+                jLabel_AdminPageMouseExited(evt);
             }
         });
 
@@ -257,57 +264,94 @@ public class Admin_Form extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_username)
-                        .addGap(62, 62, 62))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel_Add)
-                        .addGap(238, 238, 238))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(230, 230, 230))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel7)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6))
+                            .addComponent(jLabel4)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(jLabel10)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField_Username, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(jTextField_Sender)
+                    .addComponent(jTextField_Reciever)
+                    .addComponent(jTextField_Type)
+                    .addComponent(jTextField_Weight)
+                    .addComponent(jTextField_Status))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(258, 258, 258)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(245, 245, 245)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_username)
+                            .addComponent(jLabel_AdminPage))))
+                .addGap(0, 270, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(48, 48, 48)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField_Username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_username))
-                .addGap(70, 70, 70)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addComponent(jLabel_Add)
-                .addGap(28, 28, 28)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField_Username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(jTextField_Sender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jTextField_Reciever, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextField_Type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jTextField_Weight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jTextField_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addComponent(jButton_username)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addComponent(jLabel_AdminPage)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
-                .addGap(48, 48, 48))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(207, 207, 207))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(259, 259, 259))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -315,16 +359,16 @@ public class Admin_Form extends javax.swing.JFrame {
         jPanel_checking.setLayout(jPanel_checkingLayout);
         jPanel_checkingLayout.setHorizontalGroup(
             jPanel_checkingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_checkingLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel_checkingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_checkingLayout.createSequentialGroup()
-                        .addGap(0, 557, Short.MAX_VALUE)
-                        .addComponent(jLabel_minimize_checking, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_close_checking, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_checkingLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel_checkingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel_checkingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_checkingLayout.createSequentialGroup()
+                            .addComponent(jLabel_minimize_checking, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel_close_checking, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel_checkingLayout.setVerticalGroup(
@@ -336,15 +380,18 @@ public class Admin_Form extends javax.swing.JFrame {
                     .addComponent(jLabel_minimize_checking, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_checking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel_checking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -426,20 +473,46 @@ public class Admin_Form extends javax.swing.JFrame {
     
     public boolean verifyFields()
     {
-        String tracking = jTextField_Username.getText();
-        /*
-        String fname = jTextField_Fullname.getText();
-        String uname = jTextField_Username.getText();
-        String phone = jTextField_Phone.getText();
-        String pass1 = String.valueOf(jPasswordField_1.getPassword());
-        String pass2 = String.valueOf(jPasswordField_2.getPassword());
-        */
+        String Username = jTextField_Username.getText();
+        String SenderAddress = jTextField_Sender.getText();
+        String RecieverAddress = jTextField_Reciever.getText();
+        String PackageType = jTextField_Type.getText(); 
+        String Weight = jTextField_Weight.getText();
+        String Status = jTextField_Status.getText();
+       
         // check empty fields
-        if(tracking.trim().equals("") )
+        if(Username.trim().equals("") )
         {
-            JOptionPane.showMessageDialog(null, "Tracking field is empty","Empty Fields",2);
+            JOptionPane.showMessageDialog(null, "Username field is empty","Empty Fields",2);
             return false;
         }
+        
+        if(SenderAddress.trim().equals("") )
+        {
+            JOptionPane.showMessageDialog(null, "Sender Address field is empty","Empty Fields",2);
+            return false;
+        }
+        if(RecieverAddress.trim().equals("") )
+        {
+            JOptionPane.showMessageDialog(null, "Reciever Address field is empty","Empty Fields",2);
+            return false;
+        }
+        if(PackageType.trim().equals("") )
+        {
+            JOptionPane.showMessageDialog(null, "Package field is empty","Empty Fields",2);
+            return false;
+        }
+        if(Weight.trim().equals("") )
+        {
+            JOptionPane.showMessageDialog(null, "Weight field is empty","Empty Fields",2);
+            return false;
+        }
+        if(Status.trim().equals("") )
+        {
+            JOptionPane.showMessageDialog(null, "Status field is empty","Empty Fields",2);
+            return false;
+        }
+        
        
         
         // if everything is okay
@@ -448,14 +521,61 @@ public class Admin_Form extends javax.swing.JFrame {
         }
         
     }
+    // checks if username is registered in the database
+    // has to check from the users database
     
+    public boolean checkValid(String username){
+        
+        PreparedStatement st;
+        ResultSet rs;
+        boolean username_exist = false;
+        
+        
+        //gets the username 
+        String query = "SELECT * FROM `users` WHERE `Username` = ?";
+        String user = jTextField_Username.getText();
+        
+        if (query != user) {
+            JOptionPane.showMessageDialog(null, "This Username is Already Taken, Choose Another One", "Username Failed", 2);
+        }
+                   
+        try {
+            
+            st = My_CNX.getConnection().prepareStatement(query);
+            st.setString(1, username);
+            rs = st.executeQuery();
+            
+            if(rs.next())
+            {
+                
+                username_exist = false;
+                JOptionPane.showMessageDialog(null, "This Username is Already Taken, Choose Another One", "Username Failed", 2);
+            }
+     
+        } catch (SQLException ex) {
+            Logger.getLogger(Register_Form.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return username_exist;
+    }
+    
+    
+    
+    //checks if username exists
     public boolean checkUsername(String username){
         
         PreparedStatement st;
         ResultSet rs;
         boolean username_exist = false;
         
-        String query = "SELECT * FROM `banking` WHERE `tracking` = ?";
+        String query = "SELECT * FROM `package` WHERE `Username` = ?";
+        String user = jTextField_Username.getText();
+        
+        // checks if the username actually exists
+        if (query != user) {
+            //username_exist = false;
+                JOptionPane.showMessageDialog(null, "This username is connected to the database", "Invalid Username", 2);
+        }
         
         try {
             
@@ -479,22 +599,39 @@ public class Admin_Form extends javax.swing.JFrame {
     private void jButton_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_usernameActionPerformed
         // TODO add your handling code here:
       
+        String tracking;
+        //String tracking = jTextField_Package.getText();
+        //String package = jTextField_Package.getText();
         
-        String tracking = jTextField_Username.getText();
+        String PackageID = UUID.randomUUID().toString();;
+        String User = jTextField_Username.getText();
+        String SenderAddress = jTextField_Sender.getText();
+        String RecieverAddress = jTextField_Reciever.getText();
+        String PackageType = jTextField_Type.getText(); 
+        String Weight = jTextField_Weight.getText();
+        String Status = jTextField_Status.getText();
+               
         //String username = jTextField_Username.getText();
         
         if(verifyFields())
         {
-            if (!checkUsername(tracking))
+            if (!checkUsername(User))
             {
                 PreparedStatement ps;
                 ResultSet rs;
                 
-               String registerUserQuery = "INSERT INTO `banking`(`tracking`) VALUES (?)";
+               String registerUserQuery = "INSERT INTO `package`(`PackageID`, `Username`, `SenderAddress`, `ReceiverAddress`, `PackageType`, `Weight`, `Status` ) VALUES (?,?,?,?,?,?,?)";
                 
                 try {
                     ps = My_CNX.getConnection().prepareStatement(registerUserQuery);
-                    ps.setString(1, tracking);
+                    ps.setString(1, PackageID);
+                    ps.setString(2, User);
+                    ps.setString(3, SenderAddress);
+                    ps.setString(4, RecieverAddress);
+                    ps.setString(5, PackageType);
+                    ps.setString(6, Weight);
+                    ps.setString(7, Status);
+                    
                     //ps.setString(2, username);
                     
                    
@@ -512,7 +649,7 @@ public class Admin_Form extends javax.swing.JFrame {
 //                        ps.setString(7, tracking);
 //                        
                         if(ps.executeUpdate() != 0){
-                            JOptionPane.showMessageDialog(null, "Your Tracking Number has been added");
+                            JOptionPane.showMessageDialog(null, "The user has been added");
                         }else{
                             JOptionPane.showMessageDialog(null, "Error: Check Your Information");
                         }
@@ -528,6 +665,19 @@ public class Admin_Form extends javax.swing.JFrame {
             }    
         }
         
+        
+        
+        
+        
+
+  
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jButton_usernameActionPerformed
 
     private void jButton_usernameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_usernameMouseEntered
@@ -538,36 +688,34 @@ public class Admin_Form extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_usernameMouseExited
 
-    
-    
-    
-    
-    
-    private void jLabel_AddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_AddMouseClicked
+    private void jTextField_UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_UsernameActionPerformed
         // TODO add your handling code here:
-        
-        Add_Form mf = new Add_Form();
+    }//GEN-LAST:event_jTextField_UsernameActionPerformed
+
+    
+    
+    
+    
+    private void jLabel_AdminPageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_AdminPageMouseClicked
+        // TODO add your handling code here:
+        Admin_Form mf = new Admin_Form();
         mf.setVisible(true);
         mf.pack();
-        mf.setDefaultCloseOperation(Add_Form.EXIT_ON_CLOSE);
-        this.dispose();
-        
-        
-        
-        
-    }//GEN-LAST:event_jLabel_AddMouseClicked
+        mf.setDefaultCloseOperation(Admin_Form.EXIT_ON_CLOSE);
+        this.dispose();        
+    }//GEN-LAST:event_jLabel_AdminPageMouseClicked
 
-    private void jLabel_AddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_AddMouseEntered
+    private void jLabel_AdminPageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_AdminPageMouseEntered
         // TODO add your handling code here:
         Border label_border = BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(0,0,255));
-        jLabel3.setBorder(label_border);
-    }//GEN-LAST:event_jLabel_AddMouseEntered
+        jLabel3.setBorder(label_border);        
+    }//GEN-LAST:event_jLabel_AdminPageMouseEntered
 
-    private void jLabel_AddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_AddMouseExited
+    private void jLabel_AdminPageMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_AdminPageMouseExited
         // TODO add your handling code here:
         Border label_create_account_border = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.lightGray);
         jLabel3.setBorder(label_create_account_border);
-    }//GEN-LAST:event_jLabel_AddMouseExited
+    }//GEN-LAST:event_jLabel_AdminPageMouseExited
 
     /**
      * @param args the command line arguments
@@ -586,21 +734,23 @@ public class Admin_Form extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Admin_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Add_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Admin_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Add_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Admin_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Add_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Admin_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Add_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Admin_Form().setVisible(true);
+                new Add_Form().setVisible(true);
             }
         });
     }
@@ -608,9 +758,15 @@ public class Admin_Form extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_username;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel_Add;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel_AdminPage;
     private javax.swing.JLabel jLabel_close_checking;
     private javax.swing.JLabel jLabel_minimize_checking;
     private javax.swing.JPanel jPanel2;
@@ -619,9 +775,12 @@ public class Admin_Form extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_checking;
     private javax.swing.JPanel jPanel_title_checkings;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextField_Reciever;
+    private javax.swing.JTextField jTextField_Sender;
+    private javax.swing.JTextField jTextField_Status;
+    private javax.swing.JTextField jTextField_Type;
     private javax.swing.JTextField jTextField_Username;
+    private javax.swing.JTextField jTextField_Weight;
     // End of variables declaration//GEN-END:variables
 }
