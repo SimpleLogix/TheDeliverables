@@ -615,8 +615,8 @@ public class Add_Form extends javax.swing.JFrame {
         
         if(verifyFields())
         {
-            if (!checkUsername(User))
-            {
+            //if (!checkUsername(User))
+            //{
                 PreparedStatement ps;
                 ResultSet rs;
                 
@@ -662,7 +662,7 @@ public class Add_Form extends javax.swing.JFrame {
                     Logger.getLogger(Register_Form.class.getName()).log(Level.SEVERE, null, ex);
                 }
               
-            }    
+           // }    
         }
         
         

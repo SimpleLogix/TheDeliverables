@@ -12,12 +12,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -90,9 +92,7 @@ public class Admin_Form extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField_Username = new javax.swing.JTextField();
         jButton_username = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -190,9 +190,6 @@ public class Admin_Form extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel2.setText("Enter username:");
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 102));
         jLabel3.setText(" Home");
@@ -209,7 +206,7 @@ public class Admin_Form extends javax.swing.JFrame {
             }
         });
 
-        jButton_username.setText("jButton1");
+        jButton_username.setText("Retrieve Data");
         jButton_username.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton_usernameMouseEntered(evt);
@@ -226,15 +223,20 @@ public class Admin_Form extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Package ID", "Username", "SenderAdr", "ReceiverAdr", "PackageTyp", "Weight", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         jLabel_Add.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -257,37 +259,33 @@ public class Admin_Form extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_username)
-                        .addGap(62, 62, 62))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel_Add)
-                        .addGap(238, 238, 238))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(230, 230, 230))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel_Add)
+                                .addGap(238, 238, 238))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(230, 230, 230))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+                        .addContainerGap())))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(246, 246, 246)
+                .addComponent(jButton_username)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField_Username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_username))
-                .addGap(70, 70, 70)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
+                .addComponent(jButton_username)
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addComponent(jLabel_Add)
                 .addGap(28, 28, 28)
                 .addComponent(jLabel3)
@@ -299,9 +297,9 @@ public class Admin_Form extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(207, 207, 207))
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,7 +322,7 @@ public class Admin_Form extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel_close_checking, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 616, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel_checkingLayout.setVerticalGroup(
@@ -424,30 +422,30 @@ public class Admin_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseExited
 
     
-    public boolean verifyFields()
-    {
-        String tracking = jTextField_Username.getText();
-        /*
-        String fname = jTextField_Fullname.getText();
-        String uname = jTextField_Username.getText();
-        String phone = jTextField_Phone.getText();
-        String pass1 = String.valueOf(jPasswordField_1.getPassword());
-        String pass2 = String.valueOf(jPasswordField_2.getPassword());
-        */
-        // check empty fields
-        if(tracking.trim().equals("") )
-        {
-            JOptionPane.showMessageDialog(null, "Tracking field is empty","Empty Fields",2);
-            return false;
-        }
-       
-        
-        // if everything is okay
-        else{
-            return true;
-        }
-        
-    }
+//    public boolean verifyFields()
+//    {
+//        String tracking = jTextField_Username.getText();
+//        /*
+//        String fname = jTextField_Fullname.getText();
+//        String uname = jTextField_Username.getText();
+//        String phone = jTextField_Phone.getText();
+//        String pass1 = String.valueOf(jPasswordField_1.getPassword());
+//        String pass2 = String.valueOf(jPasswordField_2.getPassword());
+//        */
+//        // check empty fields
+//        if(tracking.trim().equals("") )
+//        {
+//            JOptionPane.showMessageDialog(null, "Tracking field is empty","Empty Fields",2);
+//            return false;
+//        }
+//       
+//        
+//        // if everything is okay
+//        else{
+//            return true;
+//        }
+//        
+//    }
     
     public boolean checkUsername(String username){
         
@@ -480,54 +478,87 @@ public class Admin_Form extends javax.swing.JFrame {
         // TODO add your handling code here:
       
         
-        String tracking = jTextField_Username.getText();
-        //String username = jTextField_Username.getText();
-        
-        if(verifyFields())
-        {
-            if (!checkUsername(tracking))
-            {
-                PreparedStatement ps;
-                ResultSet rs;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/the_deliverables?useSSL=false","root","");  //mysql@123
+            
+            Statement st = con.createStatement();
+            String sql = "select * from package";
+            ResultSet rs = st.executeQuery(sql);
+            
+            
+            while(rs.next()) {
+                String PackageID = String.valueOf(rs.getString("PackageID"));
                 
-               String registerUserQuery = "INSERT INTO `banking`(`tracking`) VALUES (?)";
+                String Username = rs.getString("Username");
+                String SenderAddress = rs.getString("SenderAddress");
+                String ReceiverAddress = rs.getString("ReceiverAddress");
+                String PackageType = rs.getString("PackageType");
+                String Weight = rs.getString("Weight");
+                String Status = rs.getString("Status");
                 
-                try {
-                    ps = My_CNX.getConnection().prepareStatement(registerUserQuery);
-                    ps.setString(1, tracking);
-                    //ps.setString(2, username);
-                    
-                   
-                    
-//                    try {
-//                        // save the image as blob in the database
-////                        if(image_path != null){
-////                           
-////                            InputStream image = new FileInputStream(new File(image_path));
-////                            ps.setBlob(6, image);
-////                            
-////                        }
-//                        
-//                        //ps.setNull(7, java.sql.Types.NULL);
-//                        ps.setString(7, tracking);
-//                        
-                        if(ps.executeUpdate() != 0){
-                            JOptionPane.showMessageDialog(null, "Your Tracking Number has been added");
-                        }else{
-                            JOptionPane.showMessageDialog(null, "Error: Check Your Information");
-                        }
-//                        
-//                    } catch (FileNotFoundException ex) {
-//                        Logger.getLogger(Register_Form.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-                    
-                } catch (SQLException ex) {
-                    Logger.getLogger(Register_Form.class.getName()).log(Level.SEVERE, null, ex);
-                }
-              
-            }    
+                String tbData[] = {PackageID, Username, SenderAddress, ReceiverAddress, PackageType, Weight, Status};
+                DefaultTableModel tblModel = (DefaultTableModel)jTable2.getModel();
+                
+                tblModel.addRow(tbData);
+                
+            }
+            
+            con.close();
+        }catch(Exception e) {
+            System.out.println(e.getMessage());
         }
         
+        
+        
+//        String tracking = jTextField_Username.getText();
+//        //String username = jTextField_Username.getText();
+//        
+//        if(verifyFields())
+//        {
+//            if (!checkUsername(tracking))
+//            {
+//                PreparedStatement ps;
+//                ResultSet rs;
+//                
+//               String registerUserQuery = "INSERT INTO ``(`tracking`) VALUES (?)";
+//                
+//                try {
+//                    ps = My_CNX.getConnection().prepareStatement(registerUserQuery);
+//                    ps.setString(1, tracking);
+//                    //ps.setString(2, username);
+//                    
+//                   
+//                    
+////                    try {
+////                        // save the image as blob in the database
+//////                        if(image_path != null){
+//////                           
+//////                            InputStream image = new FileInputStream(new File(image_path));
+//////                            ps.setBlob(6, image);
+//////                            
+//////                        }
+////                        
+////                        //ps.setNull(7, java.sql.Types.NULL);
+////                        ps.setString(7, tracking);
+////                        
+//                        if(ps.executeUpdate() != 0){
+//                            JOptionPane.showMessageDialog(null, "Your Tracking Number has been added");
+//                        }else{
+//                            JOptionPane.showMessageDialog(null, "Error: Check Your Information");
+//                        }
+////                        
+////                    } catch (FileNotFoundException ex) {
+////                        Logger.getLogger(Register_Form.class.getName()).log(Level.SEVERE, null, ex);
+////                    }
+//                    
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(Register_Form.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//              
+//            }    
+//        }
+//        
     }//GEN-LAST:event_jButton_usernameActionPerformed
 
     private void jButton_usernameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_usernameMouseEntered
@@ -608,7 +639,6 @@ public class Admin_Form extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_username;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel_Add;
     private javax.swing.JLabel jLabel_close_checking;
@@ -622,6 +652,5 @@ public class Admin_Form extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField_Username;
     // End of variables declaration//GEN-END:variables
 }
