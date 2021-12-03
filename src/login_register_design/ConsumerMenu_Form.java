@@ -20,18 +20,22 @@ import javax.swing.JOptionPane;
  *
  * @author gilmorer2
  */
-public class UserMenu_Form extends javax.swing.JFrame {
+public class ConsumerMenu_Form extends javax.swing.JFrame {
     
+    
+    private String username;
     
     
     public void setUsername(String username) {
-        jLabel_usermenu_username.setText(username);
+        
+        this.username = username;
+        jLabel_usermenu_username.setText("Welcome " + username + ",");
     }
 
     /**
      * Creates new form Menu_Form
      */
-    public UserMenu_Form() {
+    public ConsumerMenu_Form() {
         initComponents();
         //cent the menu form
         setLocationRelativeTo(null);
@@ -295,7 +299,7 @@ public class UserMenu_Form extends javax.swing.JFrame {
     private void jLabel_SavingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_SavingsMouseClicked
         // TODO add your handling code here:
         Consumer_Form sf = new Consumer_Form();
-        sf.setUsername(jLabel_usermenu_username.getText());
+        sf.setUsername(username);
         sf.setVisible(true);
         sf.pack();
         sf.setDefaultCloseOperation(Consumer_Form.EXIT_ON_CLOSE);
@@ -380,21 +384,23 @@ public class UserMenu_Form extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UserMenu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsumerMenu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UserMenu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsumerMenu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UserMenu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsumerMenu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UserMenu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsumerMenu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserMenu_Form().setVisible(true);
+                new ConsumerMenu_Form().setVisible(true);
             }
         });
     }

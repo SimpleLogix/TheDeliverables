@@ -54,8 +54,6 @@ public class AdminMenu_Form extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel_Savings = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel_Checkings = new javax.swing.JLabel();
         jLabel_signout = new javax.swing.JLabel();
         jLabel_close_checking = new javax.swing.JLabel();
@@ -89,22 +87,6 @@ public class AdminMenu_Form extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabel_Savings.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel_Savings.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel_Savings.setText("     Consumer");
-        jLabel_Savings.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel_Savings.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel_SavingsMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel_SavingsMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel_SavingsMouseExited(evt);
-            }
-        });
-
         jLabel_Checkings.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel_Checkings.setForeground(new java.awt.Color(0, 0, 102));
         jLabel_Checkings.setText("         Admin");
@@ -126,29 +108,16 @@ public class AdminMenu_Form extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel_Savings, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(131, 131, 131))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel_Checkings, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(122, 122, 122))))
+                .addGap(124, 124, 124)
+                .addComponent(jLabel_Checkings, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel_Savings, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(106, Short.MAX_VALUE)
                 .addComponent(jLabel_Checkings, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(105, 105, 105))
         );
 
         jLabel_signout.setForeground(new java.awt.Color(0, 0, 102));
@@ -290,19 +259,6 @@ public class AdminMenu_Form extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel_SavingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_SavingsMouseEntered
-        
-        jLabel_Savings.setBackground(Color.LIGHT_GRAY);
-        jLabel_Savings.setOpaque(true);
-        
-    }//GEN-LAST:event_jLabel_SavingsMouseEntered
-
-    private void jLabel_SavingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_SavingsMouseExited
-        
-        jLabel_Savings.setBackground(new Color(153, 153, 153));
-        
-    }//GEN-LAST:event_jLabel_SavingsMouseExited
-
     private void jLabel_CheckingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_CheckingsMouseEntered
         
         jLabel_Checkings.setBackground(Color.LIGHT_GRAY);
@@ -315,15 +271,6 @@ public class AdminMenu_Form extends javax.swing.JFrame {
         jLabel_Checkings.setBackground(new Color(153, 153, 153));
         
     }//GEN-LAST:event_jLabel_CheckingsMouseExited
-
-    private void jLabel_SavingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_SavingsMouseClicked
-        // TODO add your handling code here:
-        Consumer_Form sf = new Consumer_Form();
-        sf.setVisible(true);
-        sf.pack();
-        sf.setDefaultCloseOperation(Consumer_Form.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_jLabel_SavingsMouseClicked
 
     private void jLabel_CheckingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_CheckingsMouseClicked
         // TODO add your handling code here:
@@ -436,7 +383,6 @@ public class AdminMenu_Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel_Checkings;
-    private javax.swing.JLabel jLabel_Savings;
     private javax.swing.JLabel jLabel_close_checking;
     private javax.swing.JLabel jLabel_minimize_checking;
     private javax.swing.JLabel jLabel_signout;
@@ -445,6 +391,5 @@ public class AdminMenu_Form extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

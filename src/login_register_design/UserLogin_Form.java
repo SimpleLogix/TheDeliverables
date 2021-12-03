@@ -556,7 +556,7 @@ public class UserLogin_Form extends javax.swing.JFrame {
             if(rs.next())
             {
                 // show a new form
-                UserMenu_Form form = new UserMenu_Form();
+                ConsumerMenu_Form form = new ConsumerMenu_Form();
                 form.setUsername(username);
                 form.setVisible(true);
                 form.pack();

@@ -373,7 +373,7 @@ public class Consumer_Form extends javax.swing.JFrame {
 
     private void jLabel_home1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_home1MouseClicked
         //go to the menu form
-        UserMenu_Form mf = new UserMenu_Form();
+        ConsumerMenu_Form mf = new ConsumerMenu_Form();
         mf.setUsername(username);
         mf.setVisible(true);
         mf.pack();
