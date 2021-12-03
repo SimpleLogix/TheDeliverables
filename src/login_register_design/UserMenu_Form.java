@@ -21,6 +21,12 @@ import javax.swing.JOptionPane;
  * @author gilmorer2
  */
 public class UserMenu_Form extends javax.swing.JFrame {
+    
+    
+    
+    public void setUsername(String username) {
+        jLabel_usermenu_username.setText(username);
+    }
 
     /**
      * Creates new form Menu_Form
@@ -57,6 +63,7 @@ public class UserMenu_Form extends javax.swing.JFrame {
         jLabel_Savings = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel_signout = new javax.swing.JLabel();
+        jLabel_usermenu_username = new javax.swing.JLabel();
         jLabel_close_checking = new javax.swing.JLabel();
         jLabel_minimize_checking = new javax.swing.JLabel();
 
@@ -142,12 +149,16 @@ public class UserMenu_Form extends javax.swing.JFrame {
             }
         });
 
+        jLabel_usermenu_username.setText("jLabel3");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel_usermenu_username)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel_signout)
                 .addGap(26, 26, 26))
             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -168,7 +179,9 @@ public class UserMenu_Form extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jLabel_signout)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_signout)
+                    .addComponent(jLabel_usermenu_username))
                 .addGap(13, 13, 13)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
@@ -281,10 +294,11 @@ public class UserMenu_Form extends javax.swing.JFrame {
 
     private void jLabel_SavingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_SavingsMouseClicked
         // TODO add your handling code here:
-        Savings_Form sf = new Savings_Form();
+        Consumer_Form sf = new Consumer_Form();
+        sf.setUsername(jLabel_usermenu_username.getText());
         sf.setVisible(true);
         sf.pack();
-        sf.setDefaultCloseOperation(Savings_Form.EXIT_ON_CLOSE);
+        sf.setDefaultCloseOperation(Consumer_Form.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_jLabel_SavingsMouseClicked
 
@@ -384,7 +398,7 @@ public class UserMenu_Form extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -392,6 +406,7 @@ public class UserMenu_Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_close_checking;
     private javax.swing.JLabel jLabel_minimize_checking;
     private javax.swing.JLabel jLabel_signout;
+    private javax.swing.JLabel jLabel_usermenu_username;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

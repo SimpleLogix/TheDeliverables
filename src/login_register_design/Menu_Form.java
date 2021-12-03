@@ -318,10 +318,10 @@ public class Menu_Form extends javax.swing.JFrame {
 
     private void jLabel_SavingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_SavingsMouseClicked
         // TODO add your handling code here:
-        Savings_Form sf = new Savings_Form();
+        Consumer_Form sf = new Consumer_Form();
         sf.setVisible(true);
         sf.pack();
-        sf.setDefaultCloseOperation(Savings_Form.EXIT_ON_CLOSE);
+        sf.setDefaultCloseOperation(Consumer_Form.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_jLabel_SavingsMouseClicked
 

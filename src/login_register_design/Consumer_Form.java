@@ -11,24 +11,63 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
  *
  * @author gilmorer2
  */
-public class Savings_Form extends javax.swing.JFrame {
-
+public class Consumer_Form extends javax.swing.JFrame {
+    
+    private String username;
+    
+     public void setUsername(String username) {
+        jLabel_username.setText("Welcome " + username + ",");
+        this.username = username;
+        
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/the_deliverables?useSSL=false","root","");  //mysql@123
+            
+            Statement st = con.createStatement();
+            String sql = "select * from package where username = '" + username + "'";
+            ResultSet rs = st.executeQuery(sql);
+            
+            
+            while(rs.next()) {
+                String PackageID = String.valueOf(rs.getString("PackageID"));
+                
+                String Username = rs.getString("Username");
+                String SenderAddress = rs.getString("SenderAddress");
+                String ReceiverAddress = rs.getString("ReceiverAddress");
+                String PackageType = rs.getString("PackageType");
+                String Weight = rs.getString("Weight");
+                String Status = rs.getString("Status");
+                
+                String tbData[] = {PackageID, Username, SenderAddress, ReceiverAddress, PackageType, Weight, Status};
+                DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
+                
+                tblModel.addRow(tbData);
+                
+            }
+            
+            con.close();
+        }catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
     /**
-     * Creates new form Savings_Form
+     * Creates new form Consumer_Form
      */
-    public Savings_Form() {
+    public Consumer_Form() {
         initComponents();
         setLocationRelativeTo(null);
         
@@ -85,9 +124,10 @@ public class Savings_Form extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel_home1 = new javax.swing.JLabel();
-        jTextField_checkings = new javax.swing.JTextField();
+        jLabel_username = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -130,7 +170,7 @@ public class Savings_Form extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("Savings");
+        jLabel1.setText("Consumer");
 
         javax.swing.GroupLayout jPanel_title_checkingsLayout = new javax.swing.GroupLayout(jPanel_title_checkings);
         jPanel_title_checkings.setLayout(jPanel_title_checkingsLayout);
@@ -168,9 +208,6 @@ public class Savings_Form extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel2.setText("Your current savings balance is :");
-
         jLabel_home1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel_home1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel_home1.setText(" Home");
@@ -187,40 +224,54 @@ public class Savings_Form extends javax.swing.JFrame {
             }
         });
 
-        jTextField_checkings.setText("                           $75,000,000.03");
-        jTextField_checkings.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_checkingsActionPerformed(evt);
+        jLabel_username.setText("jLabel3");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Package ID", "Username", "Sender Addr", "Receiver Addr", "Type", "Weigth", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField_checkings, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(262, 262, 262)
                 .addComponent(jLabel_home1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(74, 74, 74))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel_username))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField_checkings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
+                .addContainerGap()
+                .addComponent(jLabel_username)
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addComponent(jLabel_home1)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -322,7 +373,8 @@ public class Savings_Form extends javax.swing.JFrame {
 
     private void jLabel_home1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_home1MouseClicked
         //go to the menu form
-        Menu_Form mf = new Menu_Form();
+        UserMenu_Form mf = new UserMenu_Form();
+        mf.setUsername(username);
         mf.setVisible(true);
         mf.pack();
         mf.setDefaultCloseOperation(Menu_Form.EXIT_ON_CLOSE);
@@ -344,10 +396,6 @@ public class Savings_Form extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel_home1MouseExited
 
-    private void jTextField_checkingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_checkingsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_checkingsActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -365,35 +413,37 @@ public class Savings_Form extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Savings_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Consumer_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Savings_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Consumer_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Savings_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Consumer_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Savings_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Consumer_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Savings_Form().setVisible(true);
+                new Consumer_Form().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel_close_savings;
     private javax.swing.JLabel jLabel_home1;
     private javax.swing.JLabel jLabel_minimize_savings;
+    private javax.swing.JLabel jLabel_username;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel_checking;
     private javax.swing.JPanel jPanel_title_checkings;
-    private javax.swing.JTextField jTextField_checkings;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

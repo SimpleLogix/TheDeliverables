@@ -22,6 +22,8 @@ import javax.swing.JOptionPane;
  * @author gilmorer2
  */
 public class Login_Form extends javax.swing.JFrame {
+    
+    
 
     /**
      * Creates new form Login_Form
@@ -555,6 +557,7 @@ public class Login_Form extends javax.swing.JFrame {
             {
                 // show a new form
                 UserMenu_Form form = new UserMenu_Form();
+                form.setUsername(username);
                 form.setVisible(true);
                 form.pack();
                 form.setLocationRelativeTo(null);
