@@ -20,12 +20,12 @@ import javax.swing.JOptionPane;
  *
  * @author gilmorer2
  */
-public class Menu_Form extends javax.swing.JFrame {
+public class AdminMenu_Form extends javax.swing.JFrame {
 
     /**
      * Creates new form Menu_Form
      */
-    public Menu_Form() {
+    public AdminMenu_Form() {
         initComponents();
         //cent the menu form
         setLocationRelativeTo(null);
@@ -337,10 +337,10 @@ public class Menu_Form extends javax.swing.JFrame {
 
     private void jLabel_signoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_signoutMouseClicked
         
-        Login_Form lf = new Login_Form();
+        UserLogin_Form lf = new UserLogin_Form();
         lf.setVisible(true);
         lf.pack();
-        lf.setDefaultCloseOperation(Login_Form.EXIT_ON_CLOSE);
+        lf.setDefaultCloseOperation(UserLogin_Form.EXIT_ON_CLOSE);
         this.dispose();
         
     }//GEN-LAST:event_jLabel_signoutMouseClicked
@@ -413,20 +413,21 @@ public class Menu_Form extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminMenu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminMenu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminMenu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminMenu_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu_Form().setVisible(true);
+                new AdminMenu_Form().setVisible(true);
             }
         });
     }

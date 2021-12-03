@@ -304,10 +304,10 @@ public class UserMenu_Form extends javax.swing.JFrame {
 
     private void jLabel_signoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_signoutMouseClicked
         
-        Login_Form lf = new Login_Form();
+        UserLogin_Form lf = new UserLogin_Form();
         lf.setVisible(true);
         lf.pack();
-        lf.setDefaultCloseOperation(Login_Form.EXIT_ON_CLOSE);
+        lf.setDefaultCloseOperation(UserLogin_Form.EXIT_ON_CLOSE);
         this.dispose();
         
     }//GEN-LAST:event_jLabel_signoutMouseClicked

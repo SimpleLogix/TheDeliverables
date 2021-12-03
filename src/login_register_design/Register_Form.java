@@ -671,7 +671,7 @@ public class Register_Form extends javax.swing.JFrame {
 
     private void jLabel_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_loginMouseClicked
 
-        Login_Form lf = new Login_Form();
+        UserLogin_Form lf = new UserLogin_Form();
         lf.setVisible(true);
         lf.pack();
         lf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -528,7 +528,7 @@ public class LoginAdmin_Form extends javax.swing.JFrame {
             if(rs.next())
             {
                 // show a new form
-                Menu_Form form = new Menu_Form();
+                AdminMenu_Form form = new AdminMenu_Form();
                 form.setVisible(true);
                 form.pack();
                 form.setLocationRelativeTo(null);

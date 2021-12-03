@@ -448,10 +448,10 @@ public class Add_Form extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         //go to the menu form
-        Menu_Form mf = new Menu_Form();
+        AdminMenu_Form mf = new AdminMenu_Form();
         mf.setVisible(true);
         mf.pack();
-        mf.setDefaultCloseOperation(Menu_Form.EXIT_ON_CLOSE);
+        mf.setDefaultCloseOperation(AdminMenu_Form.EXIT_ON_CLOSE);
         this.dispose();
         
     }//GEN-LAST:event_jLabel3MouseClicked

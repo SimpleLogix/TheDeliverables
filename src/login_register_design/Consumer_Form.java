@@ -377,7 +377,7 @@ public class Consumer_Form extends javax.swing.JFrame {
         mf.setUsername(username);
         mf.setVisible(true);
         mf.pack();
-        mf.setDefaultCloseOperation(Menu_Form.EXIT_ON_CLOSE);
+        mf.setDefaultCloseOperation(AdminMenu_Form.EXIT_ON_CLOSE);
         this.dispose();
 
     }//GEN-LAST:event_jLabel_home1MouseClicked
