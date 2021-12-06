@@ -261,6 +261,7 @@ public class UserLogin_Form extends javax.swing.JFrame {
 
         jLabel_Admin.setForeground(new java.awt.Color(0, 0, 255));
         jLabel_Admin.setText(" Admin Login");
+        jLabel_Admin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel_Admin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel_AdminMouseClicked(evt);

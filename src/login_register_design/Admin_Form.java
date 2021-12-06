@@ -211,6 +211,7 @@ public class Admin_Form extends javax.swing.JFrame {
         });
 
         jButton_username.setText("Retrieve Data");
+        jButton_username.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton_username.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton_usernameMouseEntered(evt);
@@ -246,6 +247,7 @@ public class Admin_Form extends javax.swing.JFrame {
         jLabel_Add.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel_Add.setForeground(new java.awt.Color(0, 0, 255));
         jLabel_Add.setText("Add");
+        jLabel_Add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel_Add.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jLabel_AddMouseDragged(evt);
@@ -264,6 +266,7 @@ public class Admin_Form extends javax.swing.JFrame {
         });
 
         jButton1.setText("Shipped");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -271,6 +274,7 @@ public class Admin_Form extends javax.swing.JFrame {
         });
 
         jButton2.setText("Delayed");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -278,6 +282,7 @@ public class Admin_Form extends javax.swing.JFrame {
         });
 
         jButton3.setText("Arrived");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

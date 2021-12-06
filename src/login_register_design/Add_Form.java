@@ -251,6 +251,7 @@ public class Add_Form extends javax.swing.JFrame {
 
         jLabel_AdminPage.setForeground(new java.awt.Color(0, 0, 255));
         jLabel_AdminPage.setText("Admin Page");
+        jLabel_AdminPage.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel_AdminPage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel_AdminPageMouseClicked(evt);
@@ -264,8 +265,10 @@ public class Add_Form extends javax.swing.JFrame {
         });
 
         jRadioButton_Small.setText("Small");
+        jRadioButton_Small.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jRadioButton_Medium.setText("Medium");
+        jRadioButton_Medium.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jRadioButton_Medium.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton_MediumActionPerformed(evt);
@@ -273,6 +276,7 @@ public class Add_Form extends javax.swing.JFrame {
         });
 
         jRadioButton_Large.setText("Large");
+        jRadioButton_Large.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jRadioButton_Large.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton_LargeActionPerformed(evt);
@@ -280,6 +284,7 @@ public class Add_Form extends javax.swing.JFrame {
         });
 
         jRadioButton_Shipped.setText("Shipped");
+        jRadioButton_Shipped.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jRadioButton_Shipped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton_ShippedActionPerformed(evt);
@@ -287,6 +292,7 @@ public class Add_Form extends javax.swing.JFrame {
         });
 
         jRadioButton_Delayed.setText("Delayed");
+        jRadioButton_Delayed.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jRadioButton_Delayed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton_DelayedActionPerformed(evt);
@@ -294,6 +300,7 @@ public class Add_Form extends javax.swing.JFrame {
         });
 
         jRadioButton_Arrived.setText("Arrived");
+        jRadioButton_Arrived.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);

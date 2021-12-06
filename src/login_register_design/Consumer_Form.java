@@ -206,7 +206,7 @@ public class Consumer_Form extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel_home1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel_home1.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel_home1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel_home1.setText(" Home");
         jLabel_home1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel_home1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -300,7 +300,7 @@ public class Consumer_Form extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_checkingLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel_checkingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 691, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
