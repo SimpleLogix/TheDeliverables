@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.Cursor;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -97,6 +98,9 @@ public class Admin_Form extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel_Add = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -191,7 +195,7 @@ public class Admin_Form extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 255));
         jLabel3.setText(" Home");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -242,6 +246,11 @@ public class Admin_Form extends javax.swing.JFrame {
         jLabel_Add.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel_Add.setForeground(new java.awt.Color(0, 0, 255));
         jLabel_Add.setText("Add");
+        jLabel_Add.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabel_AddMouseDragged(evt);
+            }
+        });
         jLabel_Add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel_AddMouseClicked(evt);
@@ -254,40 +263,72 @@ public class Admin_Form extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Shipped");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Delayed");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Arrived");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(246, 246, 246)
                         .addComponent(jButton_username))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(277, 277, 277)
-                        .addComponent(jLabel_Add)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 26, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(265, 265, 265)
-                .addComponent(jLabel3)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(168, 168, 168)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(276, 276, 276)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(287, 287, 287)
+                        .addComponent(jLabel_Add)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jButton_username)
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
+                .addGap(34, 34, 34)
                 .addComponent(jLabel_Add)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addGap(50, 50, 50))
+                .addGap(53, 53, 53))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -295,9 +336,8 @@ public class Admin_Form extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,7 +372,7 @@ public class Admin_Form extends javax.swing.JFrame {
                     .addComponent(jLabel_minimize_checking, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -599,6 +639,90 @@ public class Admin_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel_AddMouseExited
 
     /**
+     * 
+     * SHIPPED BUTTON
+     * 
+     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/the_deliverables?useSSL=false","root","");  //mysql@123
+            
+            DefaultTableModel table = (DefaultTableModel) jTable2.getModel();
+           
+            int row = jTable2.getSelectedRow();
+            int col = jTable2.getSelectedColumn();
+            String packageID = (String) table.getValueAt(row, 0);
+            Statement st = con.createStatement();
+            String sql = "UPDATE package SET Status = 'Shipped' WHERE PackageID = '" + packageID +"'";
+            st.executeUpdate(sql);
+            
+            table.setValueAt("Shipped", row, 6);
+         }
+         catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    
+    /**
+     * 
+     * DELAYED BUTTON
+     * 
+     * @param evt 
+     */
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/the_deliverables?useSSL=false","root","");  //mysql@123
+            
+            DefaultTableModel table = (DefaultTableModel) jTable2.getModel();
+           
+            int row = jTable2.getSelectedRow();
+            int col = jTable2.getSelectedColumn();
+            String packageID = (String) table.getValueAt(row, 0);
+            Statement st = con.createStatement();
+            String sql = "UPDATE package SET Status = 'Delayed' WHERE PackageID = '" + packageID +"'";
+            st.executeUpdate(sql);
+            
+            table.setValueAt("Delayed", row, 6);
+         }
+         catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+                         
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/the_deliverables?useSSL=false","root","");  //mysql@123
+            
+            DefaultTableModel table = (DefaultTableModel) jTable2.getModel();
+           
+            int row = jTable2.getSelectedRow();
+            int col = jTable2.getSelectedColumn();
+            String packageID = (String) table.getValueAt(row, 0);
+            Statement st = con.createStatement();
+            String sql = "UPDATE package SET Status = 'Arrived' WHERE PackageID = '" + packageID +"'";
+            st.executeUpdate(sql);
+            
+            table.setValueAt("Arrived", row, 6);
+         }
+         catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jLabel_AddMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_AddMouseDragged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jLabel_AddMouseDragged
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -635,6 +759,9 @@ public class Admin_Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton_username;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
