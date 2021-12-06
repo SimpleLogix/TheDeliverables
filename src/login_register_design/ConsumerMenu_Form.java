@@ -65,7 +65,6 @@ public class ConsumerMenu_Form extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel_Savings = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel_signout = new javax.swing.JLabel();
         jLabel_usermenu_username = new javax.swing.JLabel();
         jLabel_close_checking = new javax.swing.JLabel();
@@ -119,23 +118,17 @@ public class ConsumerMenu_Form extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(126, Short.MAX_VALUE)
                 .addComponent(jLabel_Savings, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(131, 131, 131))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(97, 97, 97)
                 .addComponent(jLabel_Savings, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         jLabel_signout.setForeground(new java.awt.Color(0, 0, 102));
@@ -283,29 +276,6 @@ public class ConsumerMenu_Form extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel_SavingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_SavingsMouseEntered
-        
-        jLabel_Savings.setBackground(Color.LIGHT_GRAY);
-        jLabel_Savings.setOpaque(true);
-        
-    }//GEN-LAST:event_jLabel_SavingsMouseEntered
-
-    private void jLabel_SavingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_SavingsMouseExited
-        
-        jLabel_Savings.setBackground(new Color(153, 153, 153));
-        
-    }//GEN-LAST:event_jLabel_SavingsMouseExited
-
-    private void jLabel_SavingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_SavingsMouseClicked
-        // TODO add your handling code here:
-        Consumer_Form sf = new Consumer_Form();
-        sf.setUsername(username);
-        sf.setVisible(true);
-        sf.pack();
-        sf.setDefaultCloseOperation(Consumer_Form.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_jLabel_SavingsMouseClicked
-
     private void jLabel_signoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_signoutMouseClicked
         
         UserLogin_Form lf = new UserLogin_Form();
@@ -367,6 +337,29 @@ public class ConsumerMenu_Form extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel_signoutMouseExited
 
+    private void jLabel_SavingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_SavingsMouseExited
+
+        jLabel_Savings.setBackground(new Color(153, 153, 153));
+
+    }//GEN-LAST:event_jLabel_SavingsMouseExited
+
+    private void jLabel_SavingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_SavingsMouseEntered
+
+        jLabel_Savings.setBackground(Color.LIGHT_GRAY);
+        jLabel_Savings.setOpaque(true);
+
+    }//GEN-LAST:event_jLabel_SavingsMouseEntered
+
+    private void jLabel_SavingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_SavingsMouseClicked
+        // TODO add your handling code here:
+        Consumer_Form sf = new Consumer_Form();
+        sf.setUsername(username);
+        sf.setVisible(true);
+        sf.pack();
+        sf.setDefaultCloseOperation(Consumer_Form.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jLabel_SavingsMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -418,6 +411,5 @@ public class ConsumerMenu_Form extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
